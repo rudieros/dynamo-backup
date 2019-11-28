@@ -25,7 +25,7 @@ const backup = async () => {
       items.push(fetchedItems.Items)
       lastKey = fetchedItems.LastEvaluatedKey
     } while (lastKey)
-    fs.writeFileSync(`./backups/${TableName}.json`, JSON.stringify(items))
+    fs.writeFileSync(`${__dirname}/backups/${TableName}.json`, JSON.stringify(items))
   }))
 }
 
