@@ -22,10 +22,10 @@ const backup = async () => {
         TableName,
         ExclusiveStartKey: lastKey,
       }).promise()
-      items.push(fetchedItems.Items)
+      items.push(...fetchedItems.Items)
       lastKey = fetchedItems.LastEvaluatedKey
     } while (lastKey)
-    fs.writeFileSync(`${__dirname}/backups/${TableName}.json`, JSON.stringify(items))
+    fs.writeFileSync(`${__dirname}/backups/${TableName}.json`, JSON.stringify(items, null, 1))
   }))
 }
 
